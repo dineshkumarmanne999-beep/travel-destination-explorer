@@ -1,0 +1,1229 @@
+/* ==========================================================================
+   Travel Destination Explorer - Stylesheet
+   ========================================================================== */
+
+.travel-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+/* ==========================================================================
+   1. Navbar Styles
+   ========================================================================== */
+
+.app-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 14px 24px;
+}
+
+.navbar-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform var(--transition-fast);
+}
+
+.navbar-brand:hover {
+  transform: translateY(-1px);
+}
+
+.brand-icon {
+  font-size: 28px;
+  filter: drop-shadow(0 2px 8px rgba(0, 210, 255, 0.4));
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+  line-height: 1.2;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-tagline {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link-btn {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.nav-link-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Navbar Search */
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 260px;
+  padding: 10px 34px 10px 36px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  width: 320px;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  transition: color var(--transition-fast);
+}
+
+.search-clear-btn:hover {
+  color: var(--text-primary);
+}
+
+.search-submit-btn {
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px var(--accent-glow);
+  transition: all var(--transition-fast);
+}
+
+.search-submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px var(--accent-glow);
+}
+
+/* ==========================================================================
+   2. Compact Hero Banner Styles (Sleek, low-height design)
+   ========================================================================== */
+
+.hero-banner-compact {
+  margin: 18px 0 32px;
+  padding: 24px 28px;
+  background: radial-gradient(circle at 85% 30%, rgba(0, 210, 255, 0.15) 0%, transparent 60%),
+    linear-gradient(135deg, #131b2e 0%, #0d1322 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-compact-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.hero-compact-text {
+  flex: 1;
+  max-width: 640px;
+}
+
+.hero-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  background: rgba(0, 210, 255, 0.08);
+  border: 1px solid rgba(0, 210, 255, 0.25);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+}
+
+.hero-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-cyan);
+  animation: pulse 2s infinite;
+}
+
+.hero-compact-title {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.hero-gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-compact-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+/* Compact Search Form */
+.hero-compact-search {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 4px 6px 4px 16px;
+  max-width: 460px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.hero-compact-search:focus-within {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.compact-search-icon {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-right: 8px;
+}
+
+.compact-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 13.5px;
+  font-family: inherit;
+}
+
+.compact-search-btn {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-full);
+  box-shadow: 0 3px 10px var(--accent-glow);
+  transition: all var(--transition-fast);
+}
+
+.compact-search-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px var(--accent-glow);
+}
+
+/* Right Visual Frame */
+.hero-compact-visual {
+  flex-shrink: 0;
+  width: 680px;
+  max-width: 52%;
+}
+
+.hero-visual-frame {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 210, 255, 0.12);
+  transition: transform var(--transition-normal);
+}
+
+.hero-visual-frame:hover {
+  transform: scale(1.02);
+}
+
+.hero-compact-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-floating-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   4. Horizontal Region Section Styles
+   ========================================================================== */
+
+.regions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.region-section {
+  position: relative;
+  scroll-margin-top: 100px;
+}
+
+.region-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.region-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.region-icon {
+  font-size: 32px;
+}
+
+.region-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+}
+
+.region-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.scroll-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.scroll-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.scroll-btn:hover {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  transform: scale(1.08);
+}
+
+/* Horizontal Scroll Container (The core horizontal list) */
+.horizontal-scroll-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 8px 4px 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+}
+
+.horizontal-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
+/* ==========================================================================
+   5. Country Card Styles
+   ========================================================================== */
+
+.country-card {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.country-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 210, 255, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 210, 255, 0.15);
+  background: var(--bg-card-hover);
+}
+
+.card-flag-wrapper {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background: var(--bg-secondary);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-flag-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.country-card:hover .card-flag-img {
+  transform: scale(1.06);
+}
+
+.card-flag-fallback {
+  font-size: 56px;
+}
+
+.card-region-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+}
+
+.card-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.info-label {
+  color: var(--text-muted);
+}
+
+.info-value {
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-align: right;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.explore-btn {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap var(--transition-fast);
+}
+
+.country-card:hover .explore-btn {
+  gap: 8px;
+}
+
+/* ==========================================================================
+   6. Country Detail Screen Styles
+   ========================================================================== */
+
+.detail-container {
+  padding: 24px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn-back {
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.btn-back:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  transform: translateX(-3px);
+}
+
+.detail-breadcrumbs {
+  font-size: 14px;
+  color: var(--text-muted);
+  display: flex;
+  gap: 8px;
+}
+
+.detail-breadcrumbs .active {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+/* Detail Hero Card */
+.detail-hero-card {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 36px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 32px;
+}
+
+.detail-flag-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.detail-flag-large {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+.detail-flag-emoji {
+  font-size: 120px;
+  text-align: center;
+}
+
+.flag-description-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  background: var(--bg-secondary);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.detail-header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.country-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.detail-country-title {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+}
+
+.code-pill {
+  font-size: 13px;
+  font-weight: 800;
+  padding: 4px 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--accent-cyan);
+}
+
+.detail-official-name {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.quick-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.badge {
+  font-size: 13px;
+  padding: 8px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+}
+
+.badge strong {
+  color: var(--text-primary);
+}
+
+.detail-short-summary {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.external-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ext-link-btn {
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.maps-btn {
+  background: rgba(0, 210, 255, 0.1);
+  border-color: rgba(0, 210, 255, 0.3);
+  color: var(--accent-cyan);
+}
+
+.maps-btn:hover {
+  background: var(--accent-cyan);
+  color: #0a0e17;
+  transform: translateY(-2px);
+}
+
+.wiki-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.wiki-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.govt-btn {
+  background: rgba(58, 123, 213, 0.1);
+  border-color: rgba(58, 123, 213, 0.3);
+  color: #60a5fa;
+}
+
+.govt-btn:hover {
+  background: #3a7bd5;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Detail Section Cards & Grid */
+.detail-section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.description-card {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 12px;
+}
+
+.long-description-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 14px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+  padding-bottom: 8px;
+}
+
+.info-list li:last-child {
+  border-bottom: none;
+}
+
+.info-list .label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.info-list .value {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: right;
+  max-width: 60%;
+}
+
+.timezone-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.mini-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+}
+
+/* Borders Card */
+.borders-card {
+  margin-bottom: 36px;
+}
+
+.borders-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.border-country-btn {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.border-country-btn:hover {
+  background: var(--bg-elevated);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.no-borders-note {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.detail-bottom-nav {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+/* ==========================================================================
+   7. Search Results Screen Styles
+   ========================================================================== */
+
+.search-results-container {
+  padding: 32px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+.search-results-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.search-results-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 14px;
+}
+
+.highlight-query {
+  color: var(--accent-cyan);
+}
+
+.search-results-subtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.clear-search-pill {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.clear-search-pill:hover {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.search-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.search-results-grid .country-card {
+  flex: auto;
+}
+
+/* Empty Search Card */
+.empty-search-card {
+  text-align: center;
+  padding: 60px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.empty-icon {
+  font-size: 56px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.empty-search-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.empty-search-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.popular-suggestions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.popular-suggestions span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.suggestion-tag {
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.suggestion-tag:hover {
+  background: var(--accent-cyan);
+  color: #0a0e17;
+}
+
+.btn-primary {
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 16px var(--accent-glow);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+/* ==========================================================================
+   8. Loading & Skeleton Styles
+   ========================================================================== */
+
+.skeleton-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.skeleton-card {
+  flex: 0 0 280px;
+  height: 320px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 140px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-line {
+  height: 14px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.loading-state,
+.search-loading {
+  text-align: center;
+  padding: 80px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--border-subtle);
+  border-top-color: var(--accent-cyan);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   9. Footer Styles
+   ========================================================================== */
+
+.app-footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  padding: 36px 24px;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.footer-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.footer-credits {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   10. Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-compact-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-compact-text {
+    max-width: 100%;
+  }
+
+  .hero-compact-search {
+    margin: 0 auto;
+  }
+
+  .hero-compact-visual {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-visual-frame {
+    width: 100%;
+    max-width: 100%;
+    height: 240px;
+    margin: 0 auto;
+  }
+
+  .detail-hero-card {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-banner-compact {
+    padding: 20px 16px;
+  }
+
+  .hero-compact-title {
+    font-size: 22px;
+  }
+
+  .navbar-search .search-input {
+    width: 180px;
+  }
+
+  .navbar-search .search-input:focus {
+    width: 220px;
+  }
+
+  .detail-country-title {
+    font-size: 28px;
+  }
+}
